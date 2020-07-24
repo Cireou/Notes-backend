@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
   # POST /topics
   def create
     @topic = Topic.new(topic_params)
-
+    @topic.user = current_user
     if @topic.save
       render json: @topic, status: :created, location: @topic
     else
@@ -39,6 +39,6 @@ class TopicsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def topic_params
-      params.require(:topic).permit(:title, :user_id)
+      params.require(:topic).permit(:title, :user_id, :color)
     end
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sections
   #Custom routing for users based on JSON token submitted.
   post 'users', to: 'users#create'
   get 'users', to: 'users#show'
