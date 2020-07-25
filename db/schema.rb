@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2020_07_24_043237) do
 
   create_table "sections", force: :cascade do |t|
     t.string "title"
+    t.string "notes", default: "{}"
     t.integer "topic_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
