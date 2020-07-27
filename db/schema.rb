@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_24_043237) do
+ActiveRecord::Schema.define(version: 2020_07_27_003357) do
 
   create_table "sections", force: :cascade do |t|
     t.string "title"
@@ -30,6 +30,18 @@ ActiveRecord::Schema.define(version: 2020_07_24_043237) do
     t.index ["user_id"], name: "index_topics_on_user_id"
   end
 
+  create_table "user_shared_topics", force: :cascade do |t|
+    t.integer "owner_id"
+    t.integer "sharee_id"
+    t.integer "shared_topic_id"
+    t.string "permission"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["owner_id"], name: "index_user_shared_topics_on_owner_id"
+    t.index ["shared_topic_id"], name: "index_user_shared_topics_on_shared_topic_id"
+    t.index ["sharee_id"], name: "index_user_shared_topics_on_sharee_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
@@ -40,4 +52,7 @@ ActiveRecord::Schema.define(version: 2020_07_24_043237) do
 
   add_foreign_key "sections", "topics"
   add_foreign_key "topics", "users"
+  add_foreign_key "user_shared_topics", "topics", column: "shared_topic_id"
+  add_foreign_key "user_shared_topics", "users", column: "owner_id"
+  add_foreign_key "user_shared_topics", "users", column: "sharee_id"
 end
