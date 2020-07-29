@@ -3,6 +3,7 @@ class CreateTopics < ActiveRecord::Migration[6.0]
     create_table :topics do |t|
       t.string :title
       t.string :color, default: "rgb(91, 91, 91)"
+      t.string :img_url, default: ""
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
