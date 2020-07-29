@@ -26,7 +26,7 @@ class UsersController < ApplicationController
         if current_user.valid?
             render json: current_user
         else 
-            render json: current_user.errors.messages
+            render json: {error: current_user.errors.messages}
         end
     end
 
