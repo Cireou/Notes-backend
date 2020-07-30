@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2020_07_27_003357) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.string "image_url", default: "./Images/person-icon.png"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
