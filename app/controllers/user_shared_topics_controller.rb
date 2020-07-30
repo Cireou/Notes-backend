@@ -21,7 +21,7 @@ class UserSharedTopicsController < ApplicationController
     if @user_shared_topic.save
       render json: @user_shared_topic, status: :created, location: @user_shared_topic
     else
-      render json: @user_shared_topic.errors, status: :unprocessable_entity
+      render json: {errors: @user_shared_topic.errors}
     end
   end
 
